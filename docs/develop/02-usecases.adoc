@@ -1,0 +1,78 @@
+= Use Cases
+:toc:
+
+== Generic
+
+=== Login
+
+Priority:: High
+Actors:: User and System
+Description:: The user must be able to log in to the system with their credentials.
+Preconditions::
+    - The user must be registered in the system.
+    - The user must have access to a device with an internet connection.
+Postconditions::
+    - The user is either logged in to the system or has received an error message.
+Main Scenario::
+    . The user accesses the system's login page.
+    . The user enters their username and password in the corresponding fields.
+    . The system validates the user's credentials logs the user in and redirects them to the system's main page.
+        .. If the credentials are invalid, the system displays an error message to the user and goes back to the previous step.
+
+== Products
+
+=== Add new product
+
+Priority:: Medium
+Actors:: Administrator and System
+Description:: The user must be able to add products to the system.
+Preconditions::
+    - The user is logged in to the system with the appropriate permissions.
+Postconditions::
+    - A new product has been added to the system.
+    - The user receives a confirmation message.
+Main Scenario::
+    . The user navigates to the product management section of the system.
+    . The user selects the option to "Add Product".
+    . The system presents a product creation form.
+    . The user enters the required product information, which includes product name and product description and save the form.
+    . The system validates the entered information.
+        .. If validation fails an error message is shown to the user and goes back to the previous step.
+    . The system saves the product and displays a confirmation message to the user.
+
+=== Edit existing product
+
+Priority:: Medium
+Actors:: Administrator and System
+Description:: The user must be able to edit products of the system.
+Preconditions::
+    - The user is logged in to the system with the appropriate permissions.
+Postconditions::
+    - The product is updated properly.
+    - The user receives a confirmation message.
+Main Scenario::
+    . The user navigates to the product management section of the system.
+    . The user selects a product and the option to "Edit Product".
+    . The system presents a product edit form.
+    . The user changes the product information.
+    . The system validates the entered information.
+        .. If validation fails an error message is shown to the user and goes back to the previous step.
+    . The system saves the product and displays a confirmation message to the user.
+
+=== Delete existing product
+
+Priority:: Low
+Actors:: Administrator and System
+Description:: The user must be able to delete products of the system.
+Preconditions::
+    - The user is logged in to the system with the appropriate permissions.
+Postconditions::
+    - The product is deleted.
+    - The user receives a confirmation message.
+Main Scenario::
+    . The user navigates to the product management section of the system.
+    . The user selects a product and the option to "Delete Product".
+    . The system presents a confirmation form.
+    . The user confirm to delete product.
+        .. If the user cancel the use case is invalidated.
+    . The system saves the product and displays a confirmation message to the user.
