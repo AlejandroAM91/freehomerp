@@ -1,0 +1,12 @@
+# Repository structure
+
+In this file we will describe the repository folder structure is used.
+
+|===
+| Directory         | Content
+
+| .vscode/          | VSCode IDE project configuration
+| docs/             | Project documentation
+| docs/developers/  | Developers documentation
+| docs/users/       | Users documentation
+|===
