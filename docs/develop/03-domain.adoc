@@ -1,0 +1,77 @@
+= System domain
+:toc:
+
+== Domain entities
+
+[plantuml]
+....
+
+Group ||--|{ SubGroup
+Group }o-|| User
+SubGroup }|-|{ User
+User ||-o| Session
+
+class Group <<Entity>> {
+    id: GroupId
+    name: string
+}
+
+class SubGroup <<Entity>> {
+    id: SubGroupId
+    name: string
+}
+
+class User <<Entity>> {
+    id: UserId
+    username: string
+    password: string
+}
+
+class Session <<Entity>> {
+    id: SessionId
+    expiresAt: DateTime
+}
+
+....
+
+== Domain aggregates
+
+=== Group
+
+[plantuml]
+....
+Group *-> SubGroup
+
+class Group <<Aggregate Root>> {
+    id: GroupId
+    name: string
+}
+
+class SubGroup <<Entity>> {
+    id: SubGroupId
+    name: string
+}
+....
+
+=== User
+
+[plantuml]
+....
+class User <<Aggregate Root>> {
+    id: UserId
+    username: string
+    password: string
+}
+....
+
+=== Session
+
+[plantuml]
+....
+class Session <<Aggregate Root>> {
+    id: SessionId
+    userId: UserId
+    expiresAt: DateTime
+}
+....
+
