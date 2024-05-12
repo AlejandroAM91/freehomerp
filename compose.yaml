@@ -3,5 +3,44 @@ services:
   freehomerp:
     build: .
     image: ghcr.io/alejandroam91/freehomerp:${FREEHOMERP_VERSION:-latest}
+    environment:
+      FREEHOMERP_ORIGIN: ${FREEHOMERP_DB_ORIGIN:-http://localhost:3000}
+      FREEHOMERP_DB_HOST: ${FREEHOMERP_DB_USER:-postgresql}
+      FREEHOMERP_DB_PORT: ${FREEHOMERP_DB_USER:-5432}
+      FREEHOMERP_DB_USER: ${FREEHOMERP_DB_USER:-freehomerp}
+      FREEHOMERP_DB_PASS: ${FREEHOMERP_DB_PASS:-freehomerp}
+      FREEHOMERP_DB_NAME: ${FREEHOMERP_DB_NAME:-freehomerp}
+      FREEHOMERP_SESSION_COOKIE: testcookie
     ports:
       - '3000:3000'
+  postgresql:
+    image: postgres:16-alpine3.18
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${FREEHOMERP_DB_USER:-freehomerp}
+      POSTGRES_PASSWORD: ${FREEHOMERP_DB_PASS:-freehomerp}
+      POSTGRES_DB: ${FREEHOMERP_DB_NAME:-freehomerp}
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'pg_isready -U ${FREEHOMERP_DB_USER:-freehomerp} -d ${FREEHOMERP_DB_NAME:-freehomerp}'
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - '5432:5432'
+  pgadmin:
+    image: dpage/pgadmin4:8.6
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@freehomerp.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - '8050:80'
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+  pgadmin-data:

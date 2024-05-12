@@ -1,4 +1,4 @@
-FROM node:20-alpine3.19 AS base
+FROM node:20-alpine3.18 AS base
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
@@ -26,9 +26,14 @@ LABEL org.opencontainers.image.source=https://github.com/AlejandroAM91/freehomer
 LABEL org.opencontainers.image.version=0.0.1
 LABEL org.opencontainers.image.licenses=MIT
 
-ENV ORIGIN=http://localhost:3000
-ENV NODE_ENV production
+EXPOSE 3000
+
+ENV FREEHOMERP_ORIGIN=http://localhost:3000
+ENV NODE_ENV=production
 
 RUN pnpm install
 COPY --from=builder /app/build .
-CMD [ "node", "index.js" ]
+COPY .deploy/banner.txt .deploy/entrypoint.sh knexfile.cjs ./
+COPY migrations migrations
+
+CMD [ "./entrypoint.sh" ]

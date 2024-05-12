@@ -6,9 +6,8 @@
 [plantuml]
 ....
 
-Group ||--|{ SubGroup
-Group }o-|| User
-SubGroup }|-|{ User
+Group ||-|{ SubGroup
+SubGroup }o-|{ User
 User ||-o| Session
 
 class Group <<Entity>> {
@@ -57,6 +56,8 @@ class SubGroup <<Entity>> {
 
 [plantuml]
 ....
+User *-> Session
+
 class User <<Aggregate Root>> {
     id: UserId
     username: string
@@ -71,6 +72,7 @@ class User <<Aggregate Root>> {
 class Session <<Aggregate Root>> {
     id: SessionId
     userId: UserId
+    createdAt: DateTime
     expiresAt: DateTime
 }
 ....

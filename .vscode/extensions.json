@@ -1,3 +1,7 @@
 {
-	"recommendations": ["asciidoctor.asciidoctor-vscode", "editorconfig.editorconfig"]
+	"recommendations": [
+		"asciidoctor.asciidoctor-vscode",
+		"editorconfig.editorconfig",
+		"vivaxy.vscode-conventional-commits"
+	]
 }
