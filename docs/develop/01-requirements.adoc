@@ -1,0 +1,13 @@
+= Project requirements
+:toc:
+
+== Functional Requirements
+
+- The system must allow the management of multiple users with different roles and permissions.
+
+== Non-Functional Requirements
+
+- The system must be user-friendly and intuitive.
+- The system must be secure and reliable.
+- The system must be scalable to adapt to business growth.
+- The system must be compatible with different devices and platforms.
