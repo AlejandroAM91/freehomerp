@@ -1,0 +1,66 @@
+= Use Cases
+:toc:
+
+== Generic
+
+=== Login
+
+Priority:: High
+Actors:: User and System
+Description:: The user must be able to log in to the system with their credentials.
+Preconditions::
+    - The user must be registered in the system.
+    - The user must have access to a device with an internet connection.
+Postconditions::
+    - The user is either logged in to the system or has received an error message.
+Main Scenario::
+    . The user accesses the system's login page.
+    . The user enters their username and password in the corresponding fields.
+    . The system validates the user's credentials logs the user in and redirects it to the system's main page.
+        .. If the credentials are invalid, the system displays an error message to the user and goes back to the previous step.
+
+=== Logout
+
+Priority:: High
+Actors:: User and System
+Description:: The user must be able to logout of the system.
+Preconditions::
+    - The user must be logged in the system.
+Postconditions::
+    - The user must be logged out of the system.
+Main Scenario::
+    . The user select the logout button.
+    . The system logs out the user in and redirects it to the system's login page.
+
+== Inventory
+
+=== Show all items
+
+Priority:: Medium
+Actors:: User and System
+Description:: The user must be able to add new items to the catalog.
+Preconditions::
+    - The user must be logged in the system.
+Postconditions::
+    - One or more items are included in the catalog or an error message was displayed.
+Main Scenario::
+    . The user select the option item catalog.
+    . The system shows the item catalog screen.
+
+=== Add new items
+
+Priority:: Medium
+Actors:: User and System
+Description:: The user must be able to add new items to the catalog.
+Preconditions::
+    - The user must be logged in the system.
+Postconditions::
+    - One or more items are included in the catalog or an error message was displayed.
+Main Scenario::
+    . The user select the option item catalog.
+    . The system shows the item catalog screen.
+    . The user select the option new item.
+    . The system shows the new item form.
+    . The user enters item values in the corresponding fields.
+    . The system validates the item data, save the data and redirects the user to the catalog screen.
+        .. If the item data is invalid, the system displays an error message to the user and goes back to the previous step.

@@ -1,0 +1,22 @@
+= Project requirements
+:toc:
+
+== Project Objectives
+
+- *Track product inventory*: The project should give users a central hub to track the stock of all their consumables, from food and beverages to household products.
+
+
+== Functional Requirements
+
+- The system must allow the management of multiple users with different roles and permissions.
+- The system must allow the management of a complete item catalog, with detailed information such as name, description, stock, etc.
+- The system must allow for item receiving, with the possibility of registering the receiving date, supplier, quantity, and price.
+- The system must allow for inventory control, with the possibility to consult the stock of item in real-time, view the history of inventory movements, and make inventory adjustments.
+- The system must allow for the generation of reports.
+
+== Non-Functional Requirements
+
+- The system must be user-friendly and intuitive.
+- The system must be secure and reliable.
+- The system must be scalable to adapt to business growth.
+- The system must be compatible with different devices and platforms.
