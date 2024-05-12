@@ -1,0 +1,7 @@
+name: freehomerp
+services:
+  freehomerp:
+    build: .
+    image: ghcr.io/alejandroam91/freehomerp:${FREEHOMERP_VERSION:-latest}
+    ports:
+      - '3000:3000'

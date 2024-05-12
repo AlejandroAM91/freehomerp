@@ -2,16 +2,19 @@
 
 Welcome to the FreeHomeRP project! This project is a tool designed to assist you in efficiently managing various aspects of your home, including finances, shopping lists, tasks, and more. With our user-friendly interface and powerful features and tools, you can easily stay organized and streamline your home management responsibilities.
 
+== Documentation
 
-## Versioning
+You can found the project's developers documentation https://github.com/AlejandroAM91/freehomerp/tree/main/docs/develop[here]
+
+== Versioning
 
 We use http://semver.org/[SemVer] for versioning.  For the versions available, see the https://github.com/AlejandroAM91/freehomerp/releases[releases on this repository] and the https://github.com/AlejandroAM91/freehomerp/blob/main/CHANGELOG.adoc[changelog].
 
-## License
+== License
 
 This project is under https://github.com/AlejandroAM91/freehomerp/blob/main/LICENSE[MIT License].
 
 
-## Authors
+== Authors
 
 - Alejandro Alonso Mayo - https://github.com/AlejandroAM91[github] - mailto:alejandroalonsomayo@gmail.com[mail]
