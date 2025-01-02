@@ -1,12 +1,14 @@
-# *Project Name*
+# FreeHomeRP
+
+Open Source Home Resource Planning
 
 ## Versioning
 
-We use http://semver.org/[SemVer] for versioning.  For the versions available, see the [releases on this repository](*Releases URL*) and the [changelog](*Changelog URL*).
+We use http://semver.org/[SemVer] for versioning.  For the versions available, see the [releases on this repository](https://github.com/AlejandroAM91/freehomerp/releases) and the [changelog](https://github.com/AlejandroAM91/freehomerp/blob/main/CHANGELOG.md).
 
 ## License
 
-This project is under [MIT License](*License URL*).
+This project is under [MIT License](https://github.com/AlejandroAM91/freehomerp/blob/main/LICENSE).
 
 ## Authors
 

@@ -1,0 +1,23 @@
+name: Cleanup docker images
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 0"  # every sunday at 00:00
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+jobs:
+  cleanup:
+    name: Cleanup docker images
+    runs-on: ubuntu-24.04
+    permissions:
+      packages: write
+    steps:
+      - uses: snok/container-retention-policy@v3.0.0
+        with:
+          account: user
+          token: ${{ secrets.GITHUB_TOKEN }}
+          image-names: ${{ github.event.repository.name }}
+          image-tags: "snapshot-*"
+          cut-off: 1w
+          keep-n-most-recent: 1
