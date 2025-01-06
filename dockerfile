@@ -14,8 +14,16 @@ COPY internal internal
 RUN CGO_ENABLED=0 GOOS=linux go build -o freehomerp ./cmd/freehomerp
 
 
+# # Create run image
+# FROM migrate/migrate:4 AS migration
+
+# COPY migrations migrations
+
+# # ENTRYPOINT ["ls", "-la"]
+# ENTRYPOINT ["/migrate", "-path", "/migrations"]
+
 # Create run image
-FROM scratch
+FROM scratch AS service
 
 EXPOSE 8080
 

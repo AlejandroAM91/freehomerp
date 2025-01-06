@@ -8,6 +8,7 @@ import (
 	"syscall"
 
 	"github.com/alejandroam91/freehomerp/internal/pkg/infra/api"
+	"github.com/alejandroam91/freehomerp/internal/pkg/infra/data"
 	"github.com/spf13/cobra"
 )
 
@@ -19,6 +20,12 @@ var rootCmd = &cobra.Command{
 		shutdownChan := make(chan os.Signal, 1)
 		signal.Notify(shutdownChan, syscall.SIGINT, syscall.SIGTERM)
 
+		pgdb, err := data.NewPostgresDBRepository()
+		if err != nil {
+			return err
+		}
+		pgdb.Start()
+
 		apiHttp, err := api.NewApiHttp()
 		if err != nil {
 			return err
@@ -28,6 +35,10 @@ var rootCmd = &cobra.Command{
 
 		<-shutdownChan
 		if err := apiHttp.Shutdown(context.Background()); err != nil {
+			return err
+		}
+
+		if err := pgdb.Shutdown(context.Background()); err != nil {
 			return err
 		}
 

@@ -9,18 +9,18 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type ApiHttp struct {
+type HttpApi struct {
 	logger *slog.Logger
 	server *echo.Echo
 }
 
-func NewApiHttp() (*ApiHttp, error) {
+func NewApiHttp() (*HttpApi, error) {
 	server := echo.New()
 	server.HideBanner = true
 	server.HidePort = true
 
-	apiHttp := &ApiHttp{
-		logger: slog.With(slog.String("component", "ApiHttp")),
+	apiHttp := &HttpApi{
+		logger: slog.With(slog.String("component", "API::Http")),
 		server: server,
 	}
 
@@ -29,10 +29,11 @@ func NewApiHttp() (*ApiHttp, error) {
 	return apiHttp, nil
 }
 
-func (api *ApiHttp) Start() {
+func (api *HttpApi) Start() {
+	api.logger.Info("Starting component.")
 	var address = ":8080"
 	go func() {
-		api.logger.Info(fmt.Sprintf("Starting server on %s", address))
+		api.logger.Info(fmt.Sprintf("Starting http server on %s", address))
 		if err := api.server.Start(address); err != nil && err != http.ErrServerClosed {
 			api.logger.Error("HTTP Server error", slog.Any("error", err))
 			panic(err)
@@ -40,12 +41,12 @@ func (api *ApiHttp) Start() {
 	}()
 }
 
-func (api *ApiHttp) Shutdown(ctx context.Context) error {
-	api.logger.Info("Shutting down server")
+func (api *HttpApi) Shutdown(ctx context.Context) error {
+	api.logger.Info("Shutting down component.")
 	return api.server.Shutdown(ctx)
 }
 
-func setupStatusEndpoints(api *ApiHttp) {
+func setupStatusEndpoints(api *HttpApi) {
 	api.server.GET("/health", func(c echo.Context) error {
 		return c.String(200, "OK")
 	})
