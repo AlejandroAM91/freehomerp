@@ -1,0 +1,68 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250108-01
+      author: Alejandro Alonso Mayo
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: code
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+                    unique: true
+            tableName: accounts
+  - changeSet:
+      author: Alejandro Alonso Mayo
+      id: 20250108-02
+      runAlways: true
+      runOrder: last
+      changes:
+        - loadUpdateData:
+            file: db/changelog/data/accounts.csv
+            primaryKey: id
+            tableName: accounts
+  - changeSet:
+      id: 20250108-03
+      author: Alejandro Alonso Mayo
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: account_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: subaccounts_accounts
+                    nullable: false
+                    referencedTableName: accounts
+                    referencedColumnNames: id
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+                    unique: true
+            tableName: subaccounts
+  - changeSet:
+      author: Alejandro Alonso Mayo
+      id: 20250108-04
+      context: '@test'
+      runAlways: true
+      runOrder: last
+      changes:
+        - loadUpdateData:
+            file: db/changelog/data/subaccounts.csv
+            primaryKey: id
+            tableName: subaccounts

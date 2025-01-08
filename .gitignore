@@ -1,2 +1,6 @@
 .tmp/
 .idea/
+.env
+.env*
+!.env.example
+/target/
