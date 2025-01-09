@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="" th:fragment="layout (title, content)" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="'FreeHomeRP | ' + ${title}">FreeHomeRP | Layout</title>
+  <link href="https://cdn.jsdelivr.net/npm/beercss@3.8.0/dist/cdn/beer.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/beercss@3.8.0/dist/cdn/beer.min.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"
+          type="module"></script>
+</head>
+<body>
+<nav class="left drawer">
+  <header>
+    <nav>
+      <img class="circle" src="/favicon.png">
+      <h6>FreeHomeRP</h6>
+    </nav>
+  </header>
+  <a th:href="@{/}">
+    <i>home</i>
+    <span th:text="#{pages.home.menu}">Home</span>
+  </a>
+  <a th:href="@{/accounts}">
+    <i>account_balance</i>
+    <span th:text="#{pages.accounts.menu}">Account list</span>
+  </a>
+</nav>
+<header>
+  <h5 class="max left" th:text="${title}">Title</h5>
+</header>
+<main class="responsive">
+  <div class="space"></div>
+  <div th:replace="${content}">
+    <p>Layout content</p>
+  </div>
+</main>
+</body>
+</html>
