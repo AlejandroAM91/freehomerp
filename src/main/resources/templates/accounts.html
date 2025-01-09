@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="" th:replace="~{fragments/layout :: layout(#{pages.accounts.title}, ~{::#content})}" xmlns:th="http://www.thymeleaf.org">
+<html lang="" th:replace="~{fragments/layout :: layout(#{pages.accounts.title}, ~{::#content})}"
+      xmlns:th="http://www.thymeleaf.org">
 <body>
-  <div id="content">
+<div id="content">
     <article th:each="account : ${accounts}">
-      <details>
-        <summary th:text="#{|common.accounts.${account.code}.name|}">
-          Account Name
-        </summary>
-        <p th:each="subaccount : ${account.subaccounts}" th:text="${subaccount.name}">
-          Subaccount
-        </p>
-      </details>
+        <details>
+            <summary class="none" th:text="#{|common.accounts.${account.code}.name|}">
+                Account Name
+            </summary>
+            <p th:each="subaccount : ${account.subaccounts}" th:text="${subaccount.name}">
+                Subaccount
+            </p>
+        </details>
     </article>
-  </div>
+</div>
 </body>
 </html>

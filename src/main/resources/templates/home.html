@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="" th:replace="~{fragments/layout :: layout(Home, ~{::main})}" xmlns:th="http://www.thymeleaf.org">
+<html lang="" th:replace="~{fragments/layout :: layout(#{pages.home.title}, ~{::#content})})}"
+      xmlns:th="http://www.thymeleaf.org">
 <body>
 <main>
-  Home
+    <div id="content">
+        Home
+    </div>
 </main>
 </body>
 </html>
