@@ -6,14 +6,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class AccountsUseCases {
   private final AccountRepository accountRepository;
 
-  public List<Account> retrieveAccounts() {
+  public List<Account> retrieveAccountSummary() {
     return accountRepository.findAll();
   }
 }

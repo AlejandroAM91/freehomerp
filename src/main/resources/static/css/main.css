@@ -1,0 +1,71 @@
+:root {
+  --color-primary: #006783;
+  --color-primary-container: #bde9ff;
+  --color-primary-contrast: #ffffff;
+  --color-secondary: #4d616c;
+  --color-secondary-container: #d0e6f2;
+  --color-secondary-contrast: #ffffff;
+  --color-surface-container: #edeef0;
+  --color-surface-container-low: #f2f4f6;
+
+  --font-family-main: "Noto Sans", sans-serif;
+  --font-family-mono: "Noto Sans Mono", sans-serif;
+  --font-weight-regular: 400;
+
+  font-family: var(--font-family-main);
+  font-size: medium;
+  font-style: normal;
+  font-weight: var(--font-weight-regular);
+}
+
+@font-face {
+  font-family: 'Material Icons Outlined';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialiconsoutlined/v109/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.woff2) format('woff2');
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border-bottom: var(--table-border, .15rem) solid var(--color-surface-container);
+  padding: .5rem 1rem;
+  text-align: left;
+}
+
+thead {
+  --table-border: .20rem;
+}
+
+.icon-outlined {
+  font-family: 'Material Icons Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.flex {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

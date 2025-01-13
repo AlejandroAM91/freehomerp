@@ -1,0 +1,79 @@
+body {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  height: 100vw;
+  width: 100hw;
+
+  & > header {
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast);
+    height: 5rem;
+
+    & .brand {
+      align-items: center;
+      display: flex;
+      margin-left: 24px;
+      height: 100%;
+
+      .brand__logo {
+        background: url('../favicon-32x32.png');
+        border-radius: 50%;
+        display: block;
+        height: 32px;
+        margin-right: 16px;
+        width: 32px;
+      }
+
+      .brand__title {
+        display: none;
+        font-family: var(--font-family-mono);
+        font-size: xx-large;
+
+        @media (min-width: 1200px ) {
+          display: inline;
+        }
+      }
+    }
+  }
+
+  & > main {
+    display: flex;
+    flex: 1;
+    gap: .75rem;
+
+    & > nav {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      width: 20%;
+      min-width: 15rem;
+
+      & > a {
+        align-items: center;
+        border-radius: 2rem;
+        color: inherit;
+        display: flex;
+        gap: 1rem;
+        padding: .75rem;
+        text-decoration: none;
+
+        &:hover {
+          background-color: var(--color-secondary-container);
+        }
+      }
+    }
+
+    & > section {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: .75rem;
+
+      & > header {
+        font-size: xx-large;
+        text-align: center;
+      }
+    }
+  }
+}

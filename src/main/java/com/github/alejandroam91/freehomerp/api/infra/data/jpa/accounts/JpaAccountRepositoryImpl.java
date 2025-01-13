@@ -1,4 +1,4 @@
-package com.github.alejandroam91.freehomerp.api.infra.data.db.accounts;
+package com.github.alejandroam91.freehomerp.api.infra.data.jpa.accounts;
 
 import com.github.alejandroam91.freehomerp.api.core.model.Account;
 import com.github.alejandroam91.freehomerp.api.core.model.AccountRepository;
@@ -9,15 +9,15 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class AccountRepositoryImpl implements AccountRepository {
-  private final AccountJpaRepository accountJpaRepository;
-  private final AccountEntityMapper accountEntityMapper;
+class JpaAccountRepositoryImpl implements AccountRepository  {
+  private final JpaAccountClient jpaAccountClient;
+  private final JpaAccountMapper jpaAccountMapper;
 
   @Override
   public List<Account> findAll() {
-    return accountJpaRepository.findAll()
+    return jpaAccountClient.findAll()
       .stream()
-      .map(accountEntityMapper::mapEntityToModel)
+      .map(jpaAccountMapper::mapEntityToModel)
       .toList();
   }
 }

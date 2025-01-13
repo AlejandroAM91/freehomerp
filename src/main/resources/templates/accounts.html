@@ -3,16 +3,47 @@
       xmlns:th="http://www.thymeleaf.org">
 <body>
 <div id="content">
-    <article th:each="account : ${accounts}">
-        <details>
-            <summary class="none" th:text="#{|common.accounts.${account.code}.name|}">
-                Account Name
-            </summary>
-            <p th:each="subaccount : ${account.subaccounts}" th:text="${subaccount.name}">
-                Subaccount
-            </p>
-        </details>
-    </article>
+    <table>
+        <thead>
+        <tr>
+            <th>Account Name</th>
+            <th>Balance</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody x-data="{ open: false }" th:each="account : ${accounts}">
+        <tr class="cursor-pointer" x-on:click="open = ! open">
+            <th role="rowgroup">
+                <div class="flex">
+                    <span class="chevron-open icon-outlined" x-show="open">keyboard_arrow_up</span>
+                    <span class="chevron-close icon-outlined" x-show="!open">keyboard_arrow_down</span>
+                    <span th:text="#{|common.accounts.${account.code}.name|}">Account name</span>
+                </div>
+            </th>
+            <td>0 €</td>
+            <td></td>
+        </tr>
+        <tr x-show="open">
+            <td colspan="3">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Subaccount Name</th>
+                        <th>Balance</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="subaccount : ${account.subaccounts}">
+                        <td th:text="${subaccount.name}">Subaccount Name</td>
+                        <td>0 €</td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
-</html>

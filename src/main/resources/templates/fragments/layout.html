@@ -1,41 +1,45 @@
 <!DOCTYPE html>
-<html lang="" th:fragment="layout (title, content)" xmlns:th="http://www.thymeleaf.org">
+<html lang="" th:fragment="layout(title, content)" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="'FreeHomeRP | ' + ${title}">FreeHomeRP | Layout</title>
-    <link href="https://cdn.jsdelivr.net/npm/beercss@3.8.0/dist/cdn/beer.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/beercss@3.8.0/dist/cdn/beer.min.js" type="module"></script>
-    <script src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"
-            type="module"></script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&family=Noto+Sans+Mono" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/webjars/ress/dist/ress.min.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" th:href="@{/css/layout.css}"/>
+    <script th:src="@{/webjars/alpinejs/dist/cdn.min.js}" defer></script>
+    <title>FreeHomeRP | [[${title}]]</title>
 </head>
 <body>
-<nav class="left drawer">
-    <header>
-        <nav>
-            <img class="circle" src="/favicon.png">
-            <h6>FreeHomeRP</h6>
-        </nav>
-    </header>
-    <a th:href="@{/}">
-        <i>home</i>
-        <span th:text="#{pages.home.menu}">Home</span>
-    </a>
-    <a th:href="@{/accounts}">
-        <i>account_balance</i>
-        <span th:text="#{pages.accounts.menu}">Account list</span>
-    </a>
-    <a th:href="@{/transactions}">
-        <i>list</i>
-        <span th:text="#{pages.transactions.menu}">Transactions</span>
-    </a>
-</nav>
 <header>
-    <h5 class="max left" th:text="${title}">Title</h5>
+    <a class="brand">
+        <span class="brand__logo"></span>
+        <span class="brand__title">FreeHomeRP</span>
+    </a>
 </header>
-<main class="responsive">
-    <div class="space"></div>
-    <div th:replace="${content}">
-        <p>Layout content</p>
-    </div>
+<main>
+    <nav>
+        <a th:href="@{/}">
+            <span class="icon-outlined">home</span>
+            <span th:text="#{pages.home.menu}">Home</span>
+        </a>
+        <a th:href="@{/accounts}">
+            <span class="icon-outlined">account_balance</span>
+            <span th:text="#{pages.accounts.menu}">Account list</span>
+        </a>
+        <a th:href="@{/transactions}">
+            <span class="icon-outlined">view_list</span>
+            <span th:text="#{pages.transactions.menu}">Transactions</span>
+        </a>
+    </nav>
+    <section>
+        <header>
+            <span th:text="${title}">Title</span>
+        </header>
+        <div id="content" th:replace="${content}">
+            Content
+        </div>
+    </section>
 </main>
 </body>
 </html>
