@@ -13,7 +13,7 @@ public class AccountsWebController {
 
   @GetMapping("/accounts")
   public String handle(Model model) {
-    final var accounts = accountsUseCases.retrieveAccountSummary();
+    final var accounts = accountsUseCases.retrieveAccountsSummary();
     model.addAttribute("accounts", accounts);
     return "accounts";
   }
