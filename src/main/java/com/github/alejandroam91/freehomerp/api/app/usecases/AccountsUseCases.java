@@ -12,7 +12,7 @@ import java.util.List;
 public class AccountsUseCases {
   private final AccountRepository accountRepository;
 
-  public List<Account> retrieveAccountSummary() {
+  public List<Account> retrieveAccountsSummary() {
     return accountRepository.findAll();
   }
 }

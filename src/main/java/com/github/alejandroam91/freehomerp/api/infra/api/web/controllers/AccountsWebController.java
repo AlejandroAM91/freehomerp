@@ -1,4 +1,4 @@
-package com.github.alejandroam91.freehomerp.api.infra.api.web;
+package com.github.alejandroam91.freehomerp.api.infra.api.web.controllers;
 
 import com.github.alejandroam91.freehomerp.api.app.usecases.AccountsUseCases;
 import lombok.RequiredArgsConstructor;

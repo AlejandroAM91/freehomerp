@@ -2,42 +2,41 @@
 <html lang="" th:replace="~{fragments/layout :: layout(#{pages.transactions.title}, ~{::#content})}"
       xmlns:th="http://www.thymeleaf.org">
 <body>
-<main>
-    <div id="content">
-        <table>
-            <thead>
-            <tr>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
+<div id="content">
+    <table>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th></th>
+            <th>Debit</th>
+            <th>Credit</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody th:each="transaction : ${transactions}">
+            <tr th:each="line : ${transaction.entryLines}">
+                <td th:if="${lineStat.first}" th:rowspan="${lineStat.size}" th:text="${{transaction.date}}">Date</td>
+                <td th:if="${lineStat.first}" th:rowspan="${lineStat.size}" th:text="${transaction.description}">Description</td>
+                <th:block th:if="${line.debit}" th:object="${line.debit}">
+                    <td>[[#{|common.accounts.*{accountCode}.name|}]]: [[*{subaccountName}]]</td>
+                    <td>[(*{{amount}})]</td>
+                </th:block>
+                <th:block th:unless="${line.debit}">
+                    <td></td>
+                    <td></td>
+                </th:block>
+                <th:block th:if="${line.credit}" th:object="${line.credit}">
+                    <td>[(*{{amount}})]</td>
+                    <td>[[#{|common.accounts.*{accountCode}.name|}]]: [[*{subaccountName}]]</td>
+                </th:block>
+                <th:block th:unless="${line.credit}">
+                    <td></td>
+                    <td></td>
+                </th:block>
             </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <th>Footer</th>
-                <th>Footer</th>
-                <th>Footer</th>
-            </tr>
-            </tfoot>
-        </table>
-    </div>
-</main>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

@@ -1,13 +1,17 @@
-package com.github.alejandroam91.freehomerp.api.infra.api.web;
+package com.github.alejandroam91.freehomerp.api.infra.api.web.controllers;
 
 import com.github.alejandroam91.freehomerp.api.app.usecases.TransactionsUseCases;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDate;
+import java.util.Currency;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 @RequiredArgsConstructor
@@ -15,68 +19,39 @@ public class TransactionsWebController {
   private final TransactionsUseCases transactionsUseCases;
 
   @GetMapping("/transactions")
-  public String handle(Model model) {
+  public String handle(Model model, Locale locale) {
 //    final var transactions = transactionsUseCases.retrieveTransactions();
     final var transactions = List.of(
-        new Transaction(
-          LocalDate.of(1991, 1, 1),
-          "Nacimiento de alex"
-//          List.of(
-//            new TransactionEntry()
-//          ),
-//          List.of(
-//            new TransactionEntry(),
-//            new TransactionEntry()
-//          )
-        )
-      );
+      new Transaction(
+        LocalDate.of(1991, 1, 1), "Aportacion voluntaria", List.of(
+        new TransactionEntryLine(
+          new TransactionEntry("banks", "Main account", 2000),
+          new TransactionEntry("share_capital", "Partner 1", 1000)
+        ), new TransactionEntryLine(null, new TransactionEntry("share_capital", "Partner 2", 1000))
+      )
+      ), new Transaction(
+        LocalDate.of(1991, 1, 1),
+        "Aportacion extra",
+        List.of(new TransactionEntryLine(
+          new TransactionEntry("banks", "Main account", 1000),
+          new TransactionEntry("share_capital", "Partner 1", 1000)
+        ))
+      )
+    );
+
     model.addAttribute("transactions", transactions);
     return "transactions";
   }
 
-  private record Transaction(LocalDate date, String description) {
+  private record Transaction(@DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate date, String description,
+                             List<TransactionEntryLine> entryLines) {
   }
-//  private record Transaction(List<TransactionEntry> debit, List<TransactionEntry> credit) {
-//  }
 
-//  private record TransactionEntry() {
-//  }
+  private record TransactionEntryLine(TransactionEntry debit, TransactionEntry credit) {
 
+  }
 
-//  @GetMapping("/transactions")
-//  public String handle(Model model) {
-//    model.addAttribute(
-//      "transactions", List.of(
-//        new Transaction(
-//          UUID.randomUUID(), List.of(
-//          new TransactionLine(
-//            new TransactionEntry(new TransactionAccount("share_capital", "Partner 1"), 1000),
-//            new TransactionEntry(new TransactionAccount("banks", "Main"), 2000)
-//          ),
-//        new TransactionLine(
-////          null,
-//          new TransactionEntry(new TransactionAccount("share_capital", "Partner 1"), 1000),
-//            null
-//          )
-//        )//,
-////      new Transaction(UUID.randomUUID(), List.of(new TransactionLine(), new TransactionLine())),
-////      new Transaction(UUID.randomUUID(), List.of(new TransactionLine())),
-////      new Transaction(UUID.randomUUID(), List.of(new TransactionLine()))
-//        )
-//      )
-//    );
-//    return "transactions";
-//  }
-//
-//  private record Transaction(UUID id, List<TransactionLine> transactionLines) {
-//  }
-//
-//  private record TransactionLine(TransactionEntry credit, TransactionEntry debit) {
-//  }
-//
-//  private record TransactionEntry(TransactionAccount account, float amount) {
-//  }
-//
-//  private record TransactionAccount(String accountCode, String subaccountName) {
-//  }
+  private record TransactionEntry(String accountCode, String subaccountName,
+                                  @NumberFormat(style = NumberFormat.Style.CURRENCY) double amount) {
+  }
 }
