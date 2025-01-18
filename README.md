@@ -4,7 +4,7 @@ Open Source Home Resource Planning
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning.  For the versions available, see the [releases on this repository](https://github.com/AlejandroAM91/freehomerp/releases) and the [changelog](https://github.com/AlejandroAM91/freehomerp/blob/main/CHANGELOG.md).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [releases on this repository](https://github.com/AlejandroAM91/freehomerp/releases) and the [changelog](https://github.com/AlejandroAM91/freehomerp/blob/main/CHANGELOG.md).
 
 ## License
 

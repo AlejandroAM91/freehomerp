@@ -1,0 +1,52 @@
+{
+  "name": "freehomerp",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "build": "svelte-kit sync && vite build",
+    "check:format": "prettier --check .",
+    "check:format:fix": "prettier --write .",
+    "check:lint": "eslint .",
+    "check:lint:fix": "eslint . --fix",
+    "check:types": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:types:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "db:migrate": "dotenv -- knex --knexfile knex.config.js migrate:latest",
+    "db:rollback": "dotenv -- knex --knexfile knex.config.js migrate:rollback",
+    "start:deps": "docker compose up -d --remove-orphans",
+    "start:dev": "vite dev",
+    "start:preview": "vite preview",
+    "test": "pnpm run /^test:[a-z]+$/",
+    "test:unit": "vitest --run",
+    "test:unit:watch": "vitest",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@eslint/compat": "^1.2.5",
+    "@eslint/js": "^9.18.0",
+    "@sveltejs/adapter-node": "^5.2.11",
+    "@sveltejs/kit": "^2.0.0",
+    "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "dotenv-cli": "^8.0.0",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-svelte": "^2.46.1",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.1",
+    "prettier": "^3.4.2",
+    "prettier-plugin-svelte": "^3.3.3",
+    "svelte": "^5.0.0",
+    "svelte-check": "^4.0.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.20.0",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
+  },
+  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0",
+  "dependencies": {
+    "knex": "^3.1.0",
+    "pg": "^8.13.1"
+  }
+}

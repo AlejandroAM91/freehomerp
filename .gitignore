@@ -1,1 +1,15 @@
+# All directories
 .tmp/
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Current directory
+/.svelte-kit/
+/build/
+/.env
+/.env.*
+!/.env.example
+!/.env.test
+/vite.config.js.timestamp-*
+/vite.config.ts.timestamp-*
